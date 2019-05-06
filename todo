@@ -1,0 +1,10 @@
+snapshot tasks:
+
+- Get post URL from client              -
+- Serve embedded post on a webpage      - 
+    - Facebook, Twitter, Instagram, Pinterest,
+      YouTube
+- Capture rendered post                 - done
+- Return data URL to client             - 
+- Display post snapshot                 - 
+
