@@ -7,19 +7,17 @@ function isValidUrl(url) {
 }
 
 async function getEmbedCode(url) {
-  if (isValidUrl(url)) {
-    try {
-      const response = await axios.get(`https://publish.twitter.com/oembed?url=${url}`)
-      return response.data.html
-    }
-    catch (err) {
-      throw err
-    }
+  try {
+    const response = await axios.get(`https://publish.twitter.com/oembed?url=${url}`)
+    return response.data.html
+  }
+  catch (err) {
+    throw err
   }
 }
 
 module.exports = {
   isValidUrl,
-  getEmbedCode
+  getEmbedCode,
 }
 

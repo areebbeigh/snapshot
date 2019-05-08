@@ -11,25 +11,33 @@ const helpers = {
 function getHelper(url) {
   for (const platform in helpers) {
     if (helpers[platform].isValidUrl(url)) {
-      return helpers[platform]
+      return {
+        helperName: platform,
+        helper: helpers[platform]
+      } 
     }
   }
-  return false
+  throw Error('Unsupported URl')
 }
 
 module.exports = {
-  async getEmbedCode(postUrl) {
-    const helper = getHelper(postUrl)
+  async show(postUrl, res) {
+    const { helper, helperName } = getHelper(postUrl)
     if (helper) {
       try {
-        const embedHtml = await helper.getEmbedCode(postUrl)
-        return `<div id="post" style="display:inline-block;background:#fff;">${embedHtml}</div>`
+        const embedCode = await helper.getEmbedCode(postUrl)
+        res.render(helperName, { embedCode })
       }
       catch (err) {
-        throw err
+        throw Error(err)
       }
+    } else {
+      throw Error('Unsupported URL')
     }
-    throw new Error('Unsupported URL')
+  },
+
+  platform(postUrl) {
+    return getHelper(postUrl).helperName
   }
 }
 

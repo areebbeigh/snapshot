@@ -8,10 +8,13 @@ module.exports = {
   },
 
   async getEmbedCode(url) {
-    html = `<div id="fb-root"></div>
-    <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
-    <div class="fb-post" data-href="${url}"></div>`
-    return html
+    try {
+      const response = await axios.get(`https://www.facebook.com/plugins/post/oembed.json/?url=${url}`)
+      return response.data.html
+    }
+    catch (err) {
+      throw err
+    }
   }
 }
 
