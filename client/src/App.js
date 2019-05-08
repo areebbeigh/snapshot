@@ -1,19 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import test from './test.png'
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Test</h1>
-      <blockquote class="twitter-tweet" data-lang="en">
-      <p lang="en" dir="ltr">There&#39;s a new Anime coming out that solely revolves around 
-      girls wearing wet tights.<br/><br/>Pack it up now people, we have reached peak culture. 
-      <a href="https://t.co/aPxxifEkoD">pic.twitter.com/aPxxifEkoD</a></p>&mdash; Gigguk (@GiggukAZ) 
-      <a href="https://twitter.com/GiggukAZ/status/1120332463623032833?ref_src=twsrc%5Etfw">April 22, 2019</a>
-      </blockquote>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="container has-text-centered">
+          <div className="form">
+            <h1 className="title is-size-1">Snapshot</h1>
+            <input id="url" placeholder="Post URL goes here..."></input>
+          </div>
+          <div className="result">
+            <img class="animated zoomIn" src={test} alt=""/>
+          </div>
+          {/* <div className="footer">
+          </div> */}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
