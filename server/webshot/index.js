@@ -40,8 +40,11 @@ function capture(postUrl, res) {
   }) 
 
   renderStream.on('end', () => {
-    const url = `data:image/png;base64,${imgBase64}`
-    res.send(url)
+    const img = `data:image/png;base64,${imgBase64}`
+    // TODO: Send back an error if no image data is collected
+    res.send({
+      img
+    })
   })
 }
 

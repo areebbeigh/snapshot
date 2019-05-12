@@ -13,7 +13,7 @@ const app = express()
 app.use(morgan('short'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors({ credentials: true, origin: 'http://localhost:8080' }))
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 
 nunjucks.configure('views', {
   autoescape:true,
@@ -44,7 +44,7 @@ app.get('/post', async (req, res) => {
   try {
     await posts.show(postUrl, res)
   } catch (err) {
-    res.send({
+    res.status(500).send({
       error: err.message
     })
   }
@@ -55,7 +55,9 @@ app.get('/capture', (req, res) => {
   try {
     webshotHelper.capture(postUrl, res)
   } catch (err) {
-    res.send(err)
+    res.status(500).send({
+      error: err.message
+    })
   }
 })
 

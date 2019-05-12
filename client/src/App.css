@@ -1,30 +1,25 @@
-html {
-  height: 100%;
-}
-
-body {
-  background: #1A1A1C;
-  min-height: 100%;
-}
-
 h1 {
   color: #C3083F !important;
 }
 
+.App {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+.header {
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background: inherit;
-}
-
-.form {
-  margin-bottom: 5%;
-  padding-top: 13%;
-}
-
-#url {
-  width: 70%;
-  padding: 1.2em;
-  background: #242427;
-  border: none;
-  color: rgb(147, 147, 160);
+  padding: 0;
 }
 

@@ -17,7 +17,7 @@ function getHelper(url) {
       } 
     }
   }
-  throw Error('Unsupported URl')
+  throw Error('Unsupported URL')
 }
 
 module.exports = {
