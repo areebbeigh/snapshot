@@ -1,8 +1,8 @@
-.form {
-  padding-bottom: 5%;
+h1 {
+  color: #C3083F !important;
 }
 
-.result {
+.form {
   padding-bottom: 5%;
 }
 
@@ -11,6 +11,7 @@
   padding: 1.2em;
   background: #242427;
   border: none;
+  outline: none;
   color: rgb(147, 147, 160);
 }
 

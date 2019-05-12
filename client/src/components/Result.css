@@ -1,0 +1,16 @@
+.result {
+  padding-bottom: 5%;
+  min-height: 50%;
+}
+
+.error {
+  font-weight: bold;
+  color: #4E4E50;
+}
+
+#loading {
+  font-size: 4em;
+  color: #4E4E50;
+  animation-duration: 3s;
+}
+

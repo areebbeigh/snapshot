@@ -1,7 +1,3 @@
-h1 {
-  color: #C3083F !important;
-}
-
 .App {
   height: 100%;
 }
@@ -16,10 +12,11 @@ h1 {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
+  /* position: absolute;
+  bottom: 0; */
   width: 100%;
   background: inherit;
-  padding: 0;
+  padding: 5%;
 }
+
 

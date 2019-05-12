@@ -1,7 +1,10 @@
 import React from 'react'
 import { debounce } from 'lodash'
+
+import Result from './Result'
 import CaptureService from '../services/CaptureService'
-import animate from '../animate/index'
+import { animateCSS } from '../animate/index'
+import { isValidUrl } from '../helpers/validator'
 
 import './Form.css'
 
@@ -10,35 +13,44 @@ class Form extends React.Component {
     super(props)
     this.state = {
       img: null,
-      postUrl: null
+      postUrl: null,
+      loading: false,
+      error: null
     }
   }
 
   async componentWillUpdate(newProps, newState) {
-    if (this.state.postUrl !== newState.postUrl) {
+    if (this.state.postUrl !== newState.postUrl && newState.postUrl) {
       try {
-        await this.capturePost(newState.postUrl)
-        animate.animateCSS('#resImg', 'zoomIn')
+        this.setState({error: null})
+        this.setState({img: null})
+
+        if (isValidUrl(newState.postUrl)) {
+          this.setState({loading: true})
+
+          const img = await this.capturePost(newState.postUrl)
+          this.setState({img})
+          animateCSS('#resImg', 'zoomIn')
+
+          this.setState({loading: false})
+        } else {
+          this.setState({error: 'Unsupported URL'})
+          animateCSS('#url', 'shake')
+        }
       } catch (err) {
-        console.log(err)
+        console.error(err)
+        this.setState({error: err.response.data.error})
       }
     }
   }
 
   async capturePost(url) {
-    try {
-      const res = await CaptureService.getImageUrl(url)
-      this.setState({img: res.data.img})
-      console.log(res)
-    } catch (err) {
-      console.log(err.response.data)
-      // TODO: handle error
-    }
+    const res = await CaptureService.getImageUrl(url)
+    console.log('res', res)
+    return res.data.img
   }
 
   handleChange = debounce(function (event) {
-    // TODO: validate url
-    console.log('here', event)
     this.setState({postUrl: event.target.value})
   }, 700)
 
@@ -54,9 +66,10 @@ class Form extends React.Component {
           }
             id="url" placeholder="Post URL goes here..."/>
         </div>
-        <div className="result">
-          <img id="resImg" src={this.state.img} alt=""/>
-        </div>
+        <Result 
+          error={this.state.error}
+          img={this.state.img} 
+          loading={this.state.loading}/>
       </div>
     )
   }

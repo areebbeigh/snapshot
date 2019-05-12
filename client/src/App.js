@@ -3,6 +3,9 @@ import Form from './components/Form'
 
 import './App.css'
 
+const repo = 'areebbeigh/snapshot'
+const github = 'https://github.com/'
+
 class App extends React.Component {
   render() {
     return (
@@ -12,7 +15,10 @@ class App extends React.Component {
         </div>
         <Form/>
         <div className="footer">
-          Footer goes here
+          <a className="github-button" href={github + repo} data-icon="octicon-star" data-size="large" data-show-count="true" 
+            aria-label={`Star ${repo} on GitHub`}>Star</a> <span style={{padding: '5px'}}></span>
+          <a className="github-button" href={github + repo} data-icon="octicon-repo-forked" data-size="large" data-show-count="true" 
+            aria-label={`Star ${repo} on GitHub`}>Fork</a>
         </div>
       </div>
     )
