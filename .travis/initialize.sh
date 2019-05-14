@@ -4,5 +4,5 @@ git config --get remote.origin.fetch
 git fetch
 git branch -a
 git checkout deployed
-git checkout master .
 rm -rf *
+git checkout master .
