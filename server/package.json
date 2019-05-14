@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "node app.js",
     "dev": "./node_modules/nodemon/bin/nodemon.js app.js -e js,html"
   },
   "dependencies": {
