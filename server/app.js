@@ -38,7 +38,7 @@ app.get('/api/post', async (req, res) => {
 app.get('/api/capture', (req, res) => {
   const postUrl = req.query.url
   try {
-    webshotHelper.capture(postUrl, res)
+    webshotHelper.capture(postUrl, req, res)
   } catch (err) {
     res.status(500).send({
       error: err.message

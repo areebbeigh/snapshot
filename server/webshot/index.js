@@ -25,9 +25,10 @@ const options = {
   },
 }
 
-function capture(postUrl, res) {
+function capture(postUrl, req, res) {
   console.log('here', postUrl)
-  const url = `http://localhost:8081/post?url=${postUrl}`
+  const url = `${req.protocol}://${req.get('host')}/api/post?url=${postUrl}`
+  console.log(url)
   options.captureSelector = selectors[posts.platform(postUrl)]
 
   console.log(options)
