@@ -4,21 +4,17 @@ setup_git() {
 }
 
 commit_website_files() {
-  git fetch
   git branch -a
-  git checkout master
+  # git checkout -f deployed
   git add --all
+  git add -f build/*
   git commit --message "[ci skip] Travis build: $TRAVIS_BUILD_NUMBER"
-  git checkout deployed
-  git checkout master package.json test.txt public/* seeds/*
-  git status
-  git commit -m "[ci skip] Travis build: $TRAVIS_BUILD_NUMBER"
   git push origin deployed
 }
 
 set_origin() {
   git remote remove origin
-  git remote add origin https://${GH_TOKEN}@github.com/areebbeigh/TabTracker.git
+  git remote add origin https://${GH_TOKEN}@github.com/areebbeigh/snapshot.git
 }
 
 setup_git

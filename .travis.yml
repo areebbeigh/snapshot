@@ -1,8 +1,9 @@
 lang: node_js
 before_script:
+  - .travis/initialize.sh # checkout to deployed and load all changes from master
   - .travis/install_deps.sh # install server and client deps
   - .travis/build.sh # build react app
   - .travis/setup.sh # setup file structure
 script:
-  - ./push.sh
+  - ./.travis/push.sh
 
