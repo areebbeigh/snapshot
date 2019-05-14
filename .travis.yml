@@ -1,0 +1,8 @@
+lang: node_js
+before_script:
+  - .travis/install_deps.sh # install server and client deps
+  - .travis/build.sh # build react app
+  - .travis/setup.sh # setup file structure
+script:
+  - ./push.sh
+
