@@ -1,4 +1,4 @@
 mv client/build ./build
 mv server/* ./
-rm -rf client
-rm -rf server
+git rm -rf --cached client
+git rm -rf --cached server
