@@ -4,5 +4,5 @@ before_script:
   - .travis/build.sh # build react app
   - .travis/setup.sh # setup file structure
 script:
-  - ./push.sh
+  - ./.travis/push.sh
 

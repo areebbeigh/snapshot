@@ -46,5 +46,8 @@ app.get('/api/capture', (req, res) => {
   }
 })
 
+const path = require('path')
+app.use('/', express.static(path.resolve(__dirname, 'build')))
+
 app.listen(process.env.PORT || 8081, x => console.log('The server is running!'))
 
