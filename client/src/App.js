@@ -12,6 +12,11 @@ class App extends React.Component {
       <div className="App has-text-centered">
         <div className="header">
           <h1 className="title is-size-1">Snapshot</h1>
+          <div className="platforms">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+          </div>
         </div>
         <Form/>
         <div className="footer">
