@@ -9,6 +9,7 @@ function isValidUrl(url) {
 
 async function getEmbedCode(url) {
   try {
+    if (url.slice(-1) === '/') url = url.slice(0, -1)
     const response = await axios.get(`https://publish.twitter.com/oembed?url=${url}`)
     return response.data.html
   }

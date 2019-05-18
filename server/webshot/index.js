@@ -46,7 +46,7 @@ function capture(postUrl, req, res) {
     const img = `data:image/png;base64,${imgBase64}`
     if (img == 'data:image/png;base64,') {
       res.status(500).send({
-        error: 'Could not snap post'
+        error: 'Could not snap post. Check the URL and try again.'
       })
     } else {
       res.send({
