@@ -22,6 +22,13 @@ window.onload = function () {
   } catch (err) {
     console.error(err)
   }
+  // Remove story ring
+  try {
+    iframeDoc.querySelector('.StoryRing').remove()
+    iframeDoc.querySelector('.InsideRing').classList.remove('InsideRing')
+  } catch (err) {
+    console.error(err)
+  }
   // Add comments count next to likes count
   try {
     var comments = iframeDoc.querySelector('.CaptionCommentsExpand')

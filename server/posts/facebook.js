@@ -2,9 +2,10 @@ const axios = require('axios')
 
 module.exports = {
   isValidUrl(url) {
-    const pattern = /^(http:\/\/|https:\/\/)*(www\.)*(facebook)\.com(\/.+\/posts\/\d+)$/i
+    const pattern = /^(http:\/\/|https:\/\/)*(www\.)*(facebook)\.com(\/.+\/posts\/\d+)\/?/i
     const re = new RegExp(pattern)
-    return re.exec(url) ? true : false
+    const match = url.match(re)
+    return match ? match[1] : false
   },
 
   async getEmbedCode(url) {
