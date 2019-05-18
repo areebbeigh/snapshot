@@ -1,5 +1,5 @@
-const posts = require('../posts')
 const webshot = require('webshot');
+const posts = require('../posts')
 
 const selectors = {
   twitter: '.twitter-tweet',
@@ -12,8 +12,9 @@ const options = {
     width: 'all',
     height: 'all'
   },
+  errorIfStatusIsNot200: true,
   takeShotOnCallback: true,
-  renderDelay: 10000,
+  renderDelay: 5000,
   onLoadFinished: function () {
     var taken = false
     setInterval(function () {
@@ -26,11 +27,12 @@ const options = {
 }
 
 function capture(postUrl, req, res) {
-  console.log('here', postUrl)
   const url = `${req.protocol}://${req.get('host')}/api/post?url=${postUrl}`
   console.log(url)
-  options.captureSelector = selectors[posts.platform(postUrl)]
+  const platform = posts.platform(postUrl)
+  options.captureSelector = selectors[platform]
 
+  if (platform === 'facebook') options.renderDelay = 10000
   console.log(options)
 
   const renderStream = webshot(url, options)
@@ -42,11 +44,18 @@ function capture(postUrl, req, res) {
 
   renderStream.on('end', () => {
     const img = `data:image/png;base64,${imgBase64}`
-    // TODO: Send back an error if no image data is collected
-    res.send({
-      img
-    })
+    if (img == 'data:image/png;base64,') {
+      res.status(500).send({
+        error: 'Could not snap post'
+      })
+    } else {
+      res.send({
+        img
+      })
+    }
   })
+
+  renderStream.on('error', console.log)
 }
 
 module.exports = {

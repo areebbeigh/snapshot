@@ -21,11 +21,11 @@ function getHelper(url) {
 }
 
 module.exports = {
-  async show(postUrl, res) {
+  async show(postUrl, req, res) {
     const { helper, helperName } = getHelper(postUrl)
     if (helper) {
       try {
-        const embedCode = await helper.getEmbedCode(postUrl)
+        const embedCode = await helper.getEmbedCode(postUrl, req)
         res.render(helperName, { embedCode })
       }
       catch (err) {
