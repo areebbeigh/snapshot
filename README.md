@@ -10,6 +10,20 @@ Try it out at https://snappshot.herokuapp.com
 - React & Node
 - node-webshot (with PhantomJS)
 
+### Developing
+
+Start react dev server:
+```bash
+cd client
+npm run start
+```
+
+Start node dev server:
+```bash
+cd server
+npm run dev
+```
+
 ### Previews
 <details><summary>Instagram</summary>
 <br>
