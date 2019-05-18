@@ -1,5 +1,26 @@
 {% extends "base.html" %}
+{% block style %}
+body {
+  overflow: auto !important;
+}
+
+iframe {
+  background: white;
+  max-width: 658px;
+  width: calc(100% - 2px);
+  border-radius: 3px;
+  border: 1px solid rgb(219, 219, 219);
+  box-shadow: none;
+  display: block;
+  margin: 0px 0px 12px;
+  min-width: 326px;
+  padding: 0px;
+}
+{% endblock %}
+
 {% block body %}
-{{ embedCode | safe }}
+{{embedCode | safe}}
+
+<script src="/static/instagram.js"></script>
 {% endblock %}
 

@@ -9,7 +9,7 @@ export default ({img, loading, error}) => {
         error ? 
           <p className="error">{error}</p> :
         loading && !img ? 
-          <span id="loading" class="animated flash infinite">...</span> :
+          <span id="loading" className="animated flash infinite">...</span> :
           <img id="resImg" src={img} alt=""/>
       }
     </div>

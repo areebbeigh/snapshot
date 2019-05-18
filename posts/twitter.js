@@ -1,9 +1,10 @@
 const axios = require('axios')
 
 function isValidUrl(url) {
-  const pattern = /^(http:\/\/|https:\/\/)*(www\.)*(twitter)\.com(\/.+\/status\/\d+)$/i
+  const pattern = /^((http:\/\/|https:\/\/)*(www\.)*(twitter)\.com(\/.+\/status\/\d+)\/?)/i
   const re = new RegExp(pattern)
-  return re.exec(url) ? true : false
+  const match = url.match(re)
+  return match ? match[1] : false
 }
 
 async function getEmbedCode(url) {
