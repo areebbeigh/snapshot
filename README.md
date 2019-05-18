@@ -3,6 +3,8 @@
 Generate Instagram, Twitter and Facebook post screenshots. This project is still a little rough around the edges.
 Try it out at https://snappshot.herokuapp.com
 
+<p align="center"><img src="https://github.com/areebbeigh/snapshot/blob/master/previews/app.png"/></p>
+
 ### What I'm using:
 
 - React & Node
